@@ -10,6 +10,15 @@ saveSnapshot = (forms) => {
 
 loadSnapshot = () => {
     forms = JSON.parse(localStorage.getItem("forms")) || [];
+
+    if(forms.length > 0){
+        // to pre-fill if exist
+        window.addEventListener("DOMContentLoaded", () => {
+            if(forms.length > 0){
+                usernameInput.value = forms[forms.length - 1].username;
+            }
+        });
+    }
 }
 
 loadSnapshot();
