@@ -28,7 +28,7 @@ h1 {
   font-weight: bold;
   font-size: 1rem;
 }
-.form-group input:invalid {
+.form-group input.touched:invalid {
   border-color: #e74c3c !important; /* Light red for invalid built-in states */
 }
 .form-group .error-message {
