@@ -19,14 +19,14 @@
             
             <fieldset class="fieldset form-group">
                 <legend class="fieldset-legend">Username:</legend>
-                <input type="text" id="username" name="username" pattern="^[A-Za-z0-9_]{6,}$" class="input" placeholder="Enter name" />
+                <input type="text" id="username" name="username" pattern="^[A-Za-z0-9_]{6,}$" required class="input" placeholder="Enter name" />
                 <p class="label">Required</p>
                 <span class="!text-red-500 error-message" id="usernameError"></span>
             </fieldset>
 
             <fieldset class="fieldset form-group">
                 <legend class="fieldset-legend">Email:</legend>
-                <input type="email" id="email" name="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" required class="input" placeholder="Enter email" />
+                <input type="email" id="email" name="email" pattern="^[A-Za-z0-9._%+\-]+@[A-Za-z0-9]+\.[A-Za-z]{2,}$" required class="input" placeholder="Enter email" />
                 <p class="label">Required</p>
                 <span class="!text-red-500 error-message" id="emailError"></span>
             </fieldset>
@@ -41,6 +41,7 @@
             <fieldset class="fieldset form-group">
                 <legend class="fieldset-legend">Confirm Password:</legend>
                 <input type="password" id="confirmPassword" name="confirmPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" required class="input" placeholder="Confirm password" />
+                <p></p>
                 <span class="!text-red-500 error-message" id="confirmPasswordError"></span>
             </fieldset>
 

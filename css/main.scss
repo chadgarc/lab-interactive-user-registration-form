@@ -29,7 +29,11 @@ h1 {
         font-size: 1rem;
     }
 
-    input:invalid {
+    // Adding a subclass and the pseudoclass like this, will activate
+    // This pseudoclass only after the user interacts with the box, 
+    // I'll add thru js a subclass touched after the input detects an interaction
+    // with blur that is activated when user lose focus with object
+    input.touched:invalid {
         border-color: #e74c3c !important; /* Light red for invalid built-in states */
     }
 
