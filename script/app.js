@@ -1,7 +1,18 @@
 
 // User names
 
-const forms = new Array();
+let forms = new Array();
+
+saveSnapshot = (forms) => {
+    localStorage.setItem("forms", JSON.stringify(forms));
+    console.log(JSON.stringify(forms));
+}
+
+loadSnapshot = () => {
+    forms = JSON.parse(localStorage.getItem("forms")) || [];
+}
+
+loadSnapshot();
 
 const REGEXPWDVALIDATION = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 const USERINVALIDMESSAGE = "Enter a valid username with at least 6 characters";
@@ -104,7 +115,10 @@ verifyValidation = (event) => {
         newForm.delete("confirmPassword");
 
         // Add form data into our array
-        forms.push(newForm);
+        forms.push(Object.fromEntries(newForm));
+
+        // save to local storage
+        saveSnapshot(forms);
 
         // Reset all entries values
         registrationForm.reset();
@@ -134,7 +148,7 @@ passwordInput.addEventListener("input", input => verifyPassword(input));
 usernameInput.addEventListener("input", input => {
     userExist = false;
     forms.forEach(form => {
-        if(form.get("username").toLowerCase() === input.target.value.toLowerCase()){
+        if(form.username.toLowerCase() === input.target.value.toLowerCase()){
             userExist = true;
         }
     });
@@ -158,7 +172,7 @@ emailInput.addEventListener("input", input => {
     emailExist = false;
 
     forms.forEach(form => {
-        if(form.get("email").toLowerCase() === input.target.value.toLowerCase()){
+        if(form.email.toLowerCase() === input.target.value.toLowerCase()){
             emailExist = true;
         }
     });
