@@ -3,7 +3,7 @@
 
 let forms = new Array();
 
-saveSnapshot = (forms) => {
+saveSnapshot = () => {
     localStorage.setItem("forms", JSON.stringify(forms));
     console.log(JSON.stringify(forms));
 }
@@ -37,6 +37,8 @@ const passwordInput = document.getElementById("password");
 const confPasswordInput = document.getElementById("confirmPassword");
 const registrationForm = document.getElementById("registrationForm"); 
 
+const successAlert = document.querySelector(".alert-success");
+
 // Global flag
 let userExist = false;
 let emailExist = false;
@@ -56,6 +58,8 @@ verifyPassword = (input) => {
         fieldColor(confPasswordInput,"green");
         changeSpan(confPasswordInput,"");
     }
+
+    disable_toggleAlert();
 }
 
 // change text inside form easily
@@ -127,7 +131,7 @@ verifyValidation = (event) => {
         forms.push(Object.fromEntries(newForm));
 
         // save to local storage
-        saveSnapshot(forms);
+        saveSnapshot();
 
         // Reset all entries values
         registrationForm.reset();
@@ -136,6 +140,8 @@ verifyValidation = (event) => {
         document.querySelectorAll("input").forEach(input => {
             input.classList.remove("touched");
         });
+
+        enable_toggleAlert();
     }
 }
 
@@ -174,6 +180,7 @@ usernameInput.addEventListener("input", input => {
             fieldColor(usernameInput,"green");
         }
     }
+    disable_toggleAlert();
 });
 
 // Test method to verify if email meets criteria
@@ -198,6 +205,7 @@ emailInput.addEventListener("input", input => {
             fieldColor(emailInput,"green");
         }
     }
+    disable_toggleAlert();
 });
 
 // Test method to verify if password meets criteria
@@ -209,6 +217,7 @@ passwordInput.addEventListener("input", input => {
         changeSpan(passwordInput, "");
         fieldColor(passwordInput,"green");
     }
+    disable_toggleAlert();
 });
 
 // change highlight color around fields
@@ -232,3 +241,11 @@ registrationForm.addEventListener("submit", event => {
     event.preventDefault(); // Avoid default form submision
     verifyValidation(event);
 });
+
+disable_toggleAlert = () => {
+    successAlert.classList.add("hidden");
+};
+
+enable_toggleAlert = () => {
+    successAlert.classList.remove("hidden");
+};
