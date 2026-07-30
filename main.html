@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive User Registration Form</title>
+
+    <!-- Import tailwind -->
+    <link href="./css/output.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="./script/app.js" defer></script>
+</head>
+<body class="w-100 min-h-screen m-0 flex flex-col mx-auto justify-center items-center container">
+    <main class="rounded-2xl">
+
+        <h1>Register</h1>
+        <form id="registrationForm" novalidate>
+            
+            <fieldset class="fieldset form-group">
+                <legend class="fieldset-legend">Username:</legend>
+                <input type="text" id="username" name="username" pattern="^[A-Za-z0-9_]+$" class="input" placeholder="Enter name" />
+                <p class="label">Required</p>
+                <span class="!text-red-500 error-message" id="usernameError"></span>
+            </fieldset>
+
+            <fieldset class="fieldset form-group">
+                <legend class="fieldset-legend">Email:</legend>
+                <input type="email" id="email" name="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" required class="input" placeholder="Enter email" />
+                <p class="label">Required</p>
+                <span class="!text-red-500 error-message" id="emailError"></span>
+            </fieldset>
+            
+            <fieldset class="fieldset form-group">
+                <legend class="fieldset-legend">Password:</legend>
+                <input type="password" id="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" required class="input" placeholder="Enter valid password" />
+                <small>Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, and a number.</small>
+                <span class="!text-red-500 error-message" id="passwordError"></span>
+            </fieldset>
+            
+            <fieldset class="fieldset form-group">
+                <legend class="fieldset-legend">Confirm Password:</legend>
+                <input type="password" id="confirmPassword" name="confirmPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" required class="input" placeholder="Confirm password" />
+                <span class="!text-red-500 error-message" id="confirmPasswordError"></span>
+            </fieldset>
+
+            <button type="submit">Register</button>
+        </form>
+
+    </main>
+</body>
+</html>
